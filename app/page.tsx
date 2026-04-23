@@ -1,4 +1,8 @@
-export default function Home() {
+import { supabase } from './lib/supabase'
+
+export default async function Home() {
+  const { data: listings } = await supabase.from('listings').select('*')
+
   return (
     <main className="min-h-screen bg-gray-50">
       <nav className="bg-white border-b px-6 py-4 flex justify-between items-center">
@@ -14,12 +18,12 @@ export default function Home() {
         <p className="text-gray-500 mb-10">The marketplace for students, by students.</p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {[1,2,3,4,5,6].map((i) => (
-            <div key={i} className="bg-white rounded-xl border p-4 hover:shadow-md transition">
+          {listings?.map((listing) => (
+            <div key={listing.id} className="bg-white rounded-xl border p-4 hover:shadow-md transition">
               <div className="bg-gray-100 rounded-lg h-40 mb-4"/>
-              <h3 className="font-semibold">Item {i}</h3>
-              <p className="text-gray-500 text-sm">Posted by a student</p>
-              <p className="font-bold mt-2">$0.00</p>
+              <h3 className="font-semibold">{listing.title}</h3>
+              <p className="text-gray-500 text-sm">{listing.description}</p>
+              <p className="font-bold mt-2">${listing.price}</p>
             </div>
           ))}
         </div>
