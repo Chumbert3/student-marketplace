@@ -9,9 +9,10 @@ export default async function Home() {
     <main className="min-h-screen bg-gray-50">
       <nav className="bg-white border-b px-6 py-4 flex justify-between items-center">
         <h1 className="text-xl font-bold">Student Marketplace</h1>
-        <div className="flex gap-4">
+        <div className="flex gap-4 items-center">
           <a href="/jobs" className="text-gray-600 hover:text-black text-sm">Jobs Board</a>
           <a href="/items" className="text-gray-600 hover:text-black text-sm">Buy & Sell</a>
+          <a href="/login" className="text-gray-600 hover:text-black text-sm">Login</a>
           <a href="/sell" className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 text-sm">Launch Your Service</a>
         </div>
       </nav>
