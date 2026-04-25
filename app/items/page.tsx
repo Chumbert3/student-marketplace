@@ -17,7 +17,11 @@ export default async function ItemsPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {items?.map((item) => (
             <div key={item.id} className="bg-white rounded-xl border p-4 hover:shadow-md transition">
-              <div className="bg-gray-100 rounded-lg h-40 mb-4"/>
+              {item.image_url ? (
+                <img src={item.image_url} alt={item.title} className="rounded-lg h-40 w-full object-cover mb-4"/>
+              ) : (
+                <div className="bg-gray-100 rounded-lg h-40 mb-4"/>
+              )}
               <div className="flex justify-between items-start">
                 <h3 className="font-semibold">{item.title}</h3>
                 <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">{item.condition}</span>

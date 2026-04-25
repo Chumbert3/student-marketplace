@@ -10,16 +10,37 @@ export default function SellItemPage() {
   const [price, setPrice] = useState('')
   const [category, setCategory] = useState('Electronics')
   const [condition, setCondition] = useState('Used')
+  const [image, setImage] = useState<File | null>(null)
   const [loading, setLoading] = useState(false)
 
   async function handleSubmit() {
     setLoading(true)
+    let image_url = ''
+
+    if (image) {
+      const fileExt = image.name.split('.').pop()
+      const fileName = `${Date.now()}.${fileExt}`
+      const { data, error } = await supabase.storage
+        .from('images')
+        .upload(fileName, image, {
+          cacheControl: '3600',
+          upsert: false,
+          contentType: image.type
+        })
+      if (data) {
+        const { data: urlData } = supabase.storage.from('images').getPublicUrl(fileName)
+        image_url = urlData.publicUrl
+      }
+      if (error) console.log('Upload error:', error)
+    }
+
     await supabase.from('items').insert({
       title,
       description,
       price: parseFloat(price),
       category,
       condition,
+      image_url,
     })
     setLoading(false)
     router.push('/items')
@@ -94,6 +115,16 @@ export default function SellItemPage() {
               type="number"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
+            />
+          </div>
+
+          <div>
+            <label className="text-sm font-medium text-gray-700">Photo</label>
+            <input
+              className="mt-1 w-full border rounded-lg px-3 py-2 text-sm"
+              type="file"
+              accept="image/*"
+              onChange={(e) => setImage(e.target.files?.[0] || null)}
             />
           </div>
 
