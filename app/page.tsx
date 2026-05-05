@@ -75,7 +75,7 @@ export default function Home() {
         <p className="text-gray-500 mb-8">Electronics, furniture, textbooks and more.</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-16">
           {items.map((item) => (
-            <div key={item.id} className="bg-white rounded-xl border p-4 hover:shadow-md transition">
+            <Link href={`/items/${item.id}`} key={item.id} className="bg-white rounded-xl border p-4 hover:shadow-md transition cursor-pointer block">
               {item.image_url ? (
                 <img src={item.image_url} alt={item.title} className="rounded-lg h-40 w-full object-cover mb-4" />
               ) : (
@@ -90,7 +90,7 @@ export default function Home() {
                 <p className="font-bold">${item.price}</p>
                 <span className="text-xs text-gray-400">{item.category}</span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
