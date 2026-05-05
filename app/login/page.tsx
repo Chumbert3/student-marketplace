@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import Link from 'next/link'
 import { supabase } from '../lib/supabase'
 import { useRouter } from 'next/navigation'
 
@@ -32,7 +33,7 @@ export default function LoginPage() {
   return (
     <main className="min-h-screen bg-gray-50 flex items-center justify-center">
       <div className="bg-white rounded-xl border p-8 w-full max-w-md">
-        <h1 className="text-2xl font-bold mb-1">Student Marketplace</h1>
+        <Link href="/" className="text-2xl font-bold mb-1 block">Student Marketplace</Link>
         <p className="text-gray-500 text-sm mb-6">{isSignUp ? 'Create an account' : 'Sign in to your account'}</p>
 
         <div className="flex flex-col gap-4">
