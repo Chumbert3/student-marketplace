@@ -17,62 +17,72 @@ export default function LoginPage() {
     setLoading(true)
     setError('')
     setMessage('')
-
-    if (isSignUp) {
-      const { error } = await supabase.auth.signUp({ email, password })
-      if (error) setError(error.message)
-      else setMessage('Check your email to confirm your account!')
-    } else {
-      const { error } = await supabase.auth.signInWithPassword({ email, password })
-      if (error) setError(error.message)
-      else router.push('/')
+    try {
+      if (isSignUp) {
+        const { error } = await supabase.auth.signUp({ email, password })
+        if (error) throw error
+        setMessage('Check your email to confirm your account!')
+      } else {
+        const { error } = await supabase.auth.signInWithPassword({ email, password })
+        if (error) throw error
+        router.push('/')
+      }
+    } catch (err: any) {
+      setError(err.message)
+    } finally {
+      setLoading(false)
     }
-    setLoading(false)
   }
 
   return (
-    <main className="min-h-screen bg-gray-50 flex items-center justify-center">
-      <div className="bg-white rounded-xl border p-8 w-full max-w-md">
-        <Link href="/" className="text-2xl font-bold mb-1 block">Student Marketplace</Link>
-        <p className="text-gray-500 text-sm mb-6">{isSignUp ? 'Create an account' : 'Sign in to your account'}</p>
+    <main className="min-h-screen flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #ff8c42 0%, #ffb347 30%, #fff8ee 60%, #ffecd2 100%)' }}>
 
-        <div className="flex flex-col gap-4">
+      <div style={{ background: 'rgba(255,255,255,0.85)', backdropFilter: 'blur(16px)', borderRadius: 24, padding: '40px 36px', width: '100%', maxWidth: 420, border: '1px solid rgba(255,140,66,0.2)', boxShadow: '0 8px 40px rgba(0,0,0,0.08)' }}>
+
+        <Link href="/" style={{ fontFamily: 'Georgia, serif', fontSize: '1.6rem', fontWeight: 800, color: '#1a1a1a', letterSpacing: '-0.5px', display: 'block', marginBottom: 4 }}>
+          Campus
+        </Link>
+        <p style={{ fontFamily: 'system-ui', fontSize: '0.9rem', color: '#7a4a1e', marginBottom: 32 }}>
+          {isSignUp ? 'Create your account' : 'Welcome back'}
+        </p>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <div>
-            <label className="text-sm font-medium text-gray-700">Email</label>
+            <label style={{ fontFamily: 'system-ui', fontSize: '0.8rem', fontWeight: 600, color: '#444' }}>Email</label>
             <input
-              className="mt-1 w-full border rounded-lg px-3 py-2 text-sm"
               type="email"
               placeholder="you@university.edu"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              style={{ marginTop: 6, width: '100%', border: '1.5px solid #e5d5c5', borderRadius: 12, padding: '10px 14px', fontSize: '0.9rem', fontFamily: 'system-ui', outline: 'none', background: '#fffaf6', boxSizing: 'border-box' }}
             />
           </div>
 
           <div>
-            <label className="text-sm font-medium text-gray-700">Password</label>
+            <label style={{ fontFamily: 'system-ui', fontSize: '0.8rem', fontWeight: 600, color: '#444' }}>Password</label>
             <input
-              className="mt-1 w-full border rounded-lg px-3 py-2 text-sm"
               type="password"
               placeholder="••••••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              style={{ marginTop: 6, width: '100%', border: '1.5px solid #e5d5c5', borderRadius: 12, padding: '10px 14px', fontSize: '0.9rem', fontFamily: 'system-ui', outline: 'none', background: '#fffaf6', boxSizing: 'border-box' }}
             />
           </div>
 
-          {error && <p className="text-red-500 text-sm">{error}</p>}
-          {message && <p className="text-green-600 text-sm">{message}</p>}
+          {error && <p style={{ fontFamily: 'system-ui', fontSize: '0.85rem', color: '#cc0000' }}>{error}</p>}
+          {message && <p style={{ fontFamily: 'system-ui', fontSize: '0.85rem', color: '#2e7d32' }}>{message}</p>}
 
           <button
             onClick={handleSubmit}
             disabled={loading}
-            className="bg-black text-white py-2 rounded-lg hover:bg-gray-800 disabled:opacity-50"
+            style={{ background: '#cc5500', color: '#fff', padding: '12px', borderRadius: 12, fontSize: '0.95rem', fontFamily: 'system-ui', fontWeight: 700, border: 'none', cursor: loading ? 'not-allowed' : 'pointer', opacity: loading ? 0.6 : 1, marginTop: 8 }}
           >
             {loading ? 'Loading...' : isSignUp ? 'Create account' : 'Sign in'}
           </button>
 
           <button
             onClick={() => setIsSignUp(!isSignUp)}
-            className="text-sm text-gray-500 hover:text-black"
+            style={{ fontFamily: 'system-ui', fontSize: '0.85rem', color: '#7a4a1e', background: 'none', border: 'none', cursor: 'pointer' }}
           >
             {isSignUp ? 'Already have an account? Sign in' : "Don't have an account? Sign up"}
           </button>
