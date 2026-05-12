@@ -23,7 +23,7 @@ export default function JobsPage() {
         <Link href="/" style={{ fontFamily: 'Georgia, serif', fontSize: '1.4rem', fontWeight: 800, color: '#1a1a1a', letterSpacing: '-0.5px' }}>
           Campus
         </Link>
-        <Link href="/post-job" style={{ background: '#cc5500', color: '#fff', padding: '8px 18px', borderRadius: '999px', fontSize: '0.82rem', fontFamily: 'system-ui', fontWeight: 600 }}>
+        <Link href="/hire" style={{ background: '#cc5500', color: '#fff', padding: '8px 18px', borderRadius: '999px', fontSize: '0.82rem', fontFamily: 'system-ui', fontWeight: 600 }}>
           + Post a Job
         </Link>
       </nav>
@@ -42,7 +42,7 @@ export default function JobsPage() {
         ) : jobs.length === 0 ? (
           <div style={{ background: 'rgba(255,255,255,0.7)', borderRadius: 20, padding: 32, textAlign: 'center' }}>
             <p style={{ fontFamily: 'Georgia, serif', fontSize: '1.1rem', color: '#888' }}>No jobs posted yet.</p>
-            <Link href="/post-job" style={{ display: 'inline-block', marginTop: 16, background: '#cc5500', color: '#fff', padding: '10px 24px', borderRadius: 999, fontFamily: 'system-ui', fontWeight: 600, fontSize: '0.9rem' }}>
+            <Link href="/hire" style={{ display: 'inline-block', marginTop: 16, background: '#cc5500', color: '#fff', padding: '10px 24px', borderRadius: 999, fontFamily: 'system-ui', fontWeight: 600, fontSize: '0.9rem' }}>
               Post the first one
             </Link>
           </div>
@@ -82,10 +82,10 @@ export default function JobsPage() {
           <span style={{ fontSize: '1.3rem' }}>🔍</span>
           <span style={{ fontFamily: 'system-ui', fontSize: '0.6rem', color: '#888' }}>Browse</span>
         </Link>
-        <Link href="/sell" style={{ background: '#cc5500', width: 52, height: 52, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none', boxShadow: '0 4px 16px rgba(204,85,0,0.4)' }}>
+        <Link href="/services" style={{ background: '#cc5500', width: 52, height: 52, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none', boxShadow: '0 4px 16px rgba(204,85,0,0.4)' }}>
           <span style={{ color: '#fff', fontSize: '1.6rem', lineHeight: 1 }}>+</span>
         </Link>
-        <Link href="/jobs" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3, textDecoration: 'none' }}>
+        <Link href="/gigs" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3, textDecoration: 'none' }}>
           <span style={{ fontSize: '1.3rem' }}>💼</span>
           <span style={{ fontFamily: 'system-ui', fontSize: '0.6rem', color: '#1a1a1a', fontWeight: 700 }}>Jobs</span>
         </Link>

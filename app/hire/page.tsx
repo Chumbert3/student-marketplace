@@ -39,7 +39,7 @@ export default function PostJobPage() {
 
       const { error } = await supabase.from('jobs').insert({ title, description, budget: parseFloat(budget), image_url, user_id: user.id })
       if (error) throw error
-      router.push('/jobs')
+      router.push('/gigs')
     } catch (err) {
       console.error(err)
       alert('Something went wrong.')
