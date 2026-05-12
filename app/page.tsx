@@ -81,23 +81,25 @@ export default function Home() {
 
         {/* Two big action cards */}
         <div className="grid grid-cols-2 gap-3 mb-8">
+
           <div style={{ background: '#1a1a1a', borderRadius: 20, padding: '20px 16px' }}>
             <p style={{ fontFamily: 'system-ui', fontSize: '0.7rem', color: '#999', letterSpacing: 2, textTransform: 'uppercase', marginBottom: 6 }}>Marketplace</p>
             <p style={{ fontFamily: 'Georgia, serif', fontSize: '1.4rem', fontWeight: 700, color: '#fff', lineHeight: 1.2 }}>Buy or sell <em style={{ color: '#ff8c42' }}>stuff</em></p>
-            <div className="flex gap-2 mt-4">
-              <Link href="/items" style={{ background: '#fff', color: '#1a1a1a', padding: '6px 14px', borderRadius: 999, fontSize: '0.75rem', fontWeight: 700, fontFamily: 'system-ui' }}>Buy</Link>
-              <Link href="/marketplace" style={{ color: '#fff', padding: '6px 14px', borderRadius: 999, fontSize: '0.75rem', fontFamily: 'system-ui', border: '1px solid #444' }}>Sell</Link>
+            <div style={{ display: 'flex', gap: 8, marginTop: 16, justifyContent: 'center' }}>
+              <Link href="/items" style={{ background: 'rgba(255,255,255,0.15)', color: '#fff', padding: '8px 24px', borderRadius: 999, fontSize: '0.8rem', fontWeight: 600, fontFamily: 'system-ui', border: '1.5px solid rgba(255,255,255,0.4)' }}>Buy</Link>
+              <Link href="/marketplace" style={{ background: 'rgba(255,255,255,0.15)', color: '#fff', padding: '8px 24px', borderRadius: 999, fontSize: '0.8rem', fontWeight: 600, fontFamily: 'system-ui', border: '1.5px solid rgba(255,255,255,0.4)' }}>Sell</Link>
             </div>
           </div>
 
           <div style={{ background: '#fff3e0', borderRadius: 20, padding: '20px 16px', border: '1.5px solid #ffb347' }}>
             <p style={{ fontFamily: 'system-ui', fontSize: '0.7rem', color: '#cc5500', letterSpacing: 2, textTransform: 'uppercase', marginBottom: 6 }}>Services</p>
             <p style={{ fontFamily: 'Georgia, serif', fontSize: '1.4rem', fontWeight: 700, color: '#1a1a1a', lineHeight: 1.2 }}>Need or offer a <em style={{ color: '#cc5500' }}>hand</em></p>
-            <div className="flex gap-2 mt-4">
-              <Link href="/hire" style={{ background: '#cc5500', color: '#fff', padding: '6px 14px', borderRadius: 999, fontSize: '0.75rem', fontWeight: 700, fontFamily: 'system-ui' }}>I need help</Link>
-              <Link href="/services" style={{ color: '#1a1a1a', padding: '6px 14px', borderRadius: 999, fontSize: '0.75rem', fontFamily: 'system-ui', border: '1px solid #ccc' }}>I'll do it</Link>
+            <div style={{ display: 'flex', gap: 8, marginTop: 16, justifyContent: 'center' }}>
+              <Link href="/hire" style={{ background: 'rgba(204,85,0,0.12)', color: '#cc5500', padding: '8px 24px', borderRadius: 999, fontSize: '0.8rem', fontWeight: 600, fontFamily: 'system-ui', border: '1.5px solid rgba(204,85,0,0.3)' }}>I need help</Link>
+              <Link href="/services" style={{ background: 'rgba(204,85,0,0.12)', color: '#cc5500', padding: '8px 24px', borderRadius: 999, fontSize: '0.8rem', fontWeight: 600, fontFamily: 'system-ui', border: '1.5px solid rgba(204,85,0,0.3)' }}>I'll do it</Link>
             </div>
           </div>
+
         </div>
 
         {/* Categories */}
@@ -115,9 +117,7 @@ export default function Home() {
 
         {/* Feed tabs */}
         <div className="mb-5">
-          <div className="flex justify-between items-center mb-4">
-            <h2 style={{ fontFamily: 'Georgia, serif', fontSize: '1.3rem', fontWeight: 700, color: '#1a1a1a' }}>On campus today</h2>
-          </div>
+          <h2 style={{ fontFamily: 'Georgia, serif', fontSize: '1.3rem', fontWeight: 700, color: '#1a1a1a', marginBottom: 16 }}>On campus today</h2>
           <div className="flex gap-2 overflow-x-auto pb-1">
             {['All', 'Services', 'Buy & Sell', 'Jobs'].map((tab) => (
               <button key={tab} onClick={() => setActiveTab(tab)} style={{ background: activeTab === tab ? '#1a1a1a' : 'rgba(255,255,255,0.6)', color: activeTab === tab ? '#fff' : '#444', padding: '7px 16px', borderRadius: 999, fontSize: '0.8rem', fontFamily: 'system-ui', fontWeight: 600, border: '1px solid', borderColor: activeTab === tab ? '#1a1a1a' : 'rgba(255,140,66,0.3)', whiteSpace: 'nowrap', cursor: 'pointer' }}>
@@ -192,7 +192,7 @@ export default function Home() {
         </Link>
         <Link href="/gigs" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3, textDecoration: 'none' }}>
           <span style={{ fontSize: '1.3rem' }}>💼</span>
-          <span style={{ fontFamily: 'system-ui', fontSize: '0.6rem', color: '#888' }}>Jobs</span>
+          <span style={{ fontFamily: 'system-ui', fontSize: '0.6rem', color: '#888' }}>Gigs</span>
         </Link>
         <Link href="/login" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3, textDecoration: 'none' }}>
           <span style={{ fontSize: '1.3rem' }}>👤</span>
